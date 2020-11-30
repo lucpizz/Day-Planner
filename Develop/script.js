@@ -19,7 +19,7 @@ $(document).ready(function () {
 
         for (tm = 0; tm <= 8; tm++) {
             var hour = tm + 8;
-            var timeSlotRow = $('<input/>').attr({ class: 'container', type: 'text', name: 'text', placeholder: 'Enter Event', time: `${[hour]}` }).addClass(".text");
+            var timeSlotRow = $('<input/>').attr({ class: 'container', type: 'text', name: 'text', placeholder: 'Enter Event' });
             $(".container").append(hour +":00", timeSlotRow, saveBtn);
 
 
