@@ -1,9 +1,18 @@
-$(document).ready(function() {
+/*
+    variables for the day-planner
+*/
 
-    // Example code for project
-    
-    $("#click-me").on("click", function() {
-      alert("I've been clicked!");
-    });
+//var today = moment().format("YYYY-MM-DD");
 
-  });
+$(document).ready(function ()
+{
+
+    var today = moment().format("dddd, MMMM Do YYYY");
+
+    $("#currentDay").text(today);
+
+    console.log(today);
+
+});
+
+
