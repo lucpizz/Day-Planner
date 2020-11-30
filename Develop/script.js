@@ -1,8 +1,4 @@
-/*
-    variables for the day-planner
-*/
 
-//var today = moment().format("YYYY-MM-DD");
 
 $(document).ready(function ()
 {
@@ -13,6 +9,27 @@ $(document).ready(function ()
 
     console.log(today);
 
+    
+    function timeSlots() {
+        
+        var tm = moment().format('hh:mm a');
+        console.log(tm);
+        
+        for (tm = 0; tm <= 8; tm++){
+            var hour = tm + 8;
+            var timeSlotRow = $('<input/>').attr({ class: 'container', type: 'text', name: 'text', placeholder: 'Enter Event',time: `${[hour]}` }).addClass(".text");
+            $(".container").append(hour + ":00", timeSlotRow);
+            
+            
+            console.log(hour);
+            console.log(timeSlotRow);
+        }
+        
+    }
+
+timeSlots();
+
+        
 });
 
 
