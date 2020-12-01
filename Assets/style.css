@@ -61,6 +61,7 @@ textarea {
   height: 80px;
   border-top: 1px solid black;
   gap: 2rem;
+  padding: 2rem 2rem 2rem 2rem;
 }
 
 .hour {
