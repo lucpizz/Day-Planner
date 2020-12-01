@@ -63,8 +63,11 @@ function timeSlotColor() {
     console.log(tm);
 }
 
-    area.value = localStorage.getItem('saveLocal');
-    area.oninput = () => {
-      area.setItem('saveLocal', area.value)
+    saveLocal.value = localStorage.setItem('saveLocal');
+    saveLoval.oninput = () => {
+      saveLocal.setItem('saveLocal', saveLocal.value)
+
+      console.log("saveLocal")
+
     };
   
