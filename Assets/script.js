@@ -62,10 +62,9 @@ function timeSlotColor() {
     $("textArea").addClass("future");
     console.log(tm);
 }
-/*
-function localStorage() {
 
-  $(".saveBtn").click(function () {
-
-}
-*/
+    area.value = localStorage.getItem('saveLocal');
+    area.oninput = () => {
+      area.setItem('saveLocal', area.value)
+    };
+  
