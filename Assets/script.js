@@ -41,7 +41,14 @@ $(document).ready(function () {
     }
 
 
+
+    $("saveLocal").on("click", function() {
+      alert("I have been clicked");
+    });
+
   }
+
+ 
 
   timeSlots();
   timeSlotColor();
@@ -63,6 +70,13 @@ function timeSlotColor() {
     console.log(tm);
 }
 
+$(document).ready(function () {
+
+  
+});
+
+  /*
+
     saveLocal.value = localStorage.setItem('saveLocal');
     saveLoval.oninput = () => {
       saveLocal.setItem('saveLocal', saveLocal.value)
@@ -70,4 +84,4 @@ function timeSlotColor() {
       console.log("saveLocal")
 
     };
-  
+  */
