@@ -2,21 +2,9 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1;
-  gap: 1rem;
-  align-items: center;
 }
 
 textarea {
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
-  gap: 1rem;
-}
-
-.text {
   background: transparent;
   border: none;
   resize: none;
@@ -40,35 +28,19 @@ textarea {
 .time-block {
   text-align: center;
   border-radius: 15px;
-  border-color: black;
-  align-items: center;
-  text-align: center;
-  height: 10rem;
-  margin: auto;
-  padding: auto;
-}
-
-.container {
-  display: inline;
-  align-items: center;
-  padding: auto;
-  gap: 1rem;
-
+  height: 40px;
 }
 
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid black;
-  gap: 2rem;
-  padding: 2rem 2rem 2rem 2rem;
+  border-top: 1px solid white;
 }
 
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
-  gap: 3rem;
 }
 
 .past {

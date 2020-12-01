@@ -1,81 +1,57 @@
+const currentTime = moment().hour();
+const tm = moment().format("H A");
 
- const currentTime = moment().hour();
- const tm = moment().format("H A");
+function getTimeClass(time_check) {
+  if (time_check < currentTime) {
+    return "past";
+  } else if (time_check === currentTime) {
+    return "present";
+  } else {
+    return "future";
+  }
+}
 
+function timeSlots() {
+  let schedule = JSON.parse(localStorage.getItem("schedule"));
+  for (var i = 8; i <= 18; i++) {
+    let task = schedule.filter((task) => task.hour == i);
+    $(".container").append(
+      `<div class="row"><div><input class="time-block textarea ${getTimeClass(
+        i
+      )}" type="text" name="text" placeholder=${
+        task.length > 0 ? task[0].task : "Enter Text"
+      }><button class="saveBtn" type="submit" hour=${i}>${i}</button></div></div>`
+    );
+  }
+}
 
 $(document).ready(function () {
   var today = moment().format("dddd, MMMM Do YYYY");
 
   $("#currentDay").text(today);
 
-  console.log(today);
+  $(document).on("click", ".saveBtn", function () {
+    let input_val = $(this).siblings("input").val();
+    let hour = $(this).attr("hour");
 
- 
+    let schedule = localStorage.getItem("schedule");
 
-  console.log(currentTime);
-
-  function timeSlots() {
-    //var tm = moment().format("H A");
-
-    //console.log(tm);
-
-    for (var i = 0; i <= 8; i++) {
-      var hour = 8 + i;
-      var timeSlotRow = $("<input/>").attr({
-        class: "container .row .time-block textarea",
-        type: "text",
-        name: "text",
-        placeholder: "Enter Event",
-      });
-      var saveBtn = $("<input>").attr({
-        class: ".saveBtn",
-        type: "submit",
-        value: "Save Event",
-        id: "saveLocal",
-      });
-      $(".container").append(hour + ":00", timeSlotRow, saveBtn, $("<br>"));
-
-      console.log(hour);
-      console.log(timeSlotRow);
-      
+    if (schedule) {
+      let old_schedule = JSON.parse(schedule);
+      old_schedule.push({ hour: hour, task: input_val });
+      localStorage.setItem("schedule", JSON.stringify(old_schedule));
+    } else {
+      localStorage.setItem(
+        "schedule",
+        JSON.stringify([{ hour: hour, task: input_val }])
+      );
     }
-
-
-
-    $("saveLocal").on("click", function() {
-      alert("I have been clicked");
-    });
-
-  }
-
- 
+  });
 
   timeSlots();
-  timeSlotColor();
-  console.log(timeSlotColor);
 });
 
-
-function timeSlotColor() {
-  if (tm < currentTime) {
-    $("textArea").addClass("past");
-    console.log(tm);
-  }
-  else if (tm === currentTime) {
-    $("textArea").addClass("current");
-    console.log(tm);
-  }
-  else
-    $("textArea").addClass("future");
-    console.log(tm);
-}
-
-$(document).ready(function () {
-
-  
-});
-
-  /*
+/*
 
     saveLocal.value = localStorage.setItem('saveLocal');
     saveLoval.oninput = () => {
