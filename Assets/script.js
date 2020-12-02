@@ -1,5 +1,7 @@
 var currentTime = moment().hour();
-var tm = moment().format("H A");
+var tm = moment().format("h");
+
+console.log(tm);
 
 function getTimeClass(time_check) {
   if (time_check < currentTime) {
@@ -13,14 +15,16 @@ function getTimeClass(time_check) {
 
 function timeSlots() {
   let schedule = JSON.parse(localStorage.getItem("schedule"));
+
   for (var i = 8; i <= 16; i++) {
-    let task = schedule.filter((task) => task.hour === i);
+    let task = localStorage.getItem(i.toString());
+
     $(".container").append(
-      `<div class=".row hour">${i}:00 <input class=".time-block textarea ${getTimeClass(
+      `<div class="row"><div class="hour col-sm-1">${i}</div><input class="rounded-0 time-block h-100 textarea col-sm-10 ${getTimeClass(
         i
-      )} type="text" name="text" placeholder=${
-        task.length > 0 ? task[0].task : "Enter_Text"
-      }><button class="saveBtn" type="submit">Save</button></div>`
+      )}" type="text" name="text" placeholder=${
+        task ? task : "Enter_Text"
+      }><button class="col-sm-1 saveBtn" type="submit"><i class="far fa-save"></i></button></div>`
     );
   }
 }
@@ -32,20 +36,10 @@ $(document).ready(function () {
 
   $(document).on("click", ".saveBtn", function () {
     let input_val = $(this).siblings("input").val();
-    let hour = $(this).attr("hour");
 
-    let schedule = localStorage.getItem("schedule");
+    let hour = $(this).parent().children(":first-child").text();
 
-    if (schedule) {
-      let old_schedule = JSON.parse(schedule);
-      old_schedule.push({ hour: hour, task: input_val });
-      localStorage.setItem("schedule", JSON.stringify(old_schedule));
-    } else {
-      localStorage.setItem(
-        "schedule",
-        JSON.stringify([{ hour: hour, task: input_val }])
-      );
-    }
+    localStorage.setItem(hour, input_val);
   });
 
   timeSlots();
