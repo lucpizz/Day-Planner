@@ -1,5 +1,5 @@
-const currentTime = moment().hour();
-const tm = moment().format("H A");
+var currentTime = moment().hour();
+var tm = moment().format("H A");
 
 function getTimeClass(time_check) {
   if (time_check < currentTime) {
