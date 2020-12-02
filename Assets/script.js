@@ -13,14 +13,14 @@ function getTimeClass(time_check) {
 
 function timeSlots() {
   let schedule = JSON.parse(localStorage.getItem("schedule"));
-  for (var i = 8; i <= 18; i++) {
-    let task = schedule.filter((task) => task.hour == i);
+  for (var i = 8; i <= 16; i++) {
+    let task = schedule.filter((task) => task.hour === i);
     $(".container").append(
-      `<div class="row"><div><input class="time-block textarea ${getTimeClass(
+      `<div class=".row hour">${i}:00 <input class=".time-block textarea ${getTimeClass(
         i
-      )}" type="text" name="text" placeholder=${
-        task.length > 0 ? task[0].task : "Enter Text"
-      }><button class="saveBtn" type="submit" hour=${i}>${i}</button></div></div>`
+      )} type="text" name="text" placeholder=${
+        task.length > 0 ? task[0].task : "Enter_Text"
+      }><button class="saveBtn" type="submit">Save</button></div>`
     );
   }
 }
@@ -50,14 +50,3 @@ $(document).ready(function () {
 
   timeSlots();
 });
-
-/*
-
-    saveLocal.value = localStorage.setItem('saveLocal');
-    saveLoval.oninput = () => {
-      saveLocal.setItem('saveLocal', saveLocal.value)
-
-      console.log("saveLocal")
-
-    };
-  */
