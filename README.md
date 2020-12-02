@@ -41,4 +41,4 @@ This project is using HTML, CSS, JavaScript, and JQuery to create a current work
 
 ## Image of the Webpage
 
-![Screenshot of Work Day Scheduler webpage](/images/Day-Planner.png)
+![Screenshot of Work Day Scheduler webpage](/Images/Day-Planner.png)
